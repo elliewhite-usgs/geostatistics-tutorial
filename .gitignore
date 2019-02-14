@@ -1,0 +1,5 @@
+*.log
+*.Rproj
+.Rproj.user
+.RData
+.Rhistory
