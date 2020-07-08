@@ -1,44 +1,48 @@
 ---
-title: "Geostatistics Tutorial"
+title: "Geostatistics in R"
 author: "Ellie White"
 date: "December 9th, 2016"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
-Disclaimer: This tutorial was written by a HYD273 student. It will most definitely contain mistakes. Please let me know them at: white.elaheh@gmail.com   
+This tutorial was written for UC Davis course HYD 273: Introduction to Geostatistics: Statistical treatment of spatial data with hydrologic emphasis. Topics: theory of random functions, variogram analysis, Kriging/co-Kriging, indicator geostatistics, and stochastic simulation of spatial variability. Geostatistical software use.  
+
+Disclaimer: It will most definitely contain mistakes. Please let me know them at: white.elaheh@gmail.com   
 Credit: Hijmans, R. (2016) Interpolation [Source code] http://www.rspatial.org for cleaned up example data and starter code.  
 
-# Contents  
-1.0 Spatial Data  
-2.0 Blank Interpolation Zone  
-3.0 Evaluation Metrics  
-4.0 The Average Model  
-5.0 Inverse Distance Weighted Model  
-6.0 Variogram  
-    .... 6.1 Anisotropy  
-7.0 Kriging Models  
-    .... 7.1 Simple Kriging  
-    .... 7.2 Ordinary Kriging  
-    .... 7.3 Universal Kriging  
-    .... 7.4 Indicator Kriging   
-    .... 7.5 Local Kriging  
-    .... 7.6 CoKriging  
-    .... 7.7 Block Kriging  
-8.0 Sequential Gaussian Simulation  
+# Contents   
+1.0 Spatial Data   
+2.0 Blank Interpolation Zone   
+3.0 Evaluation Metrics   
+4.0 The Average Model   
+5.0 Inverse Distance Weighted Model   
+6.0 Variogram   
+    .... 6.1 Anisotropy   
+7.0 Kriging Models   
+    .... 7.1 Simple Kriging   
+    .... 7.2 Ordinary Kriging   
+    .... 7.3 Universal Kriging   
+    .... 7.4 Indicator Kriging    
+    .... 7.5 Local Kriging   
+    .... 7.6 CoKriging   
+    .... 7.7 Block Kriging   
+8.0 Sequential Gaussian Simulation   
 9.0 Comparing Models  
     .... 9.1 Comparing RMSE   
-    .... 9.2 Comparing Plots  
+    .... 9.2 Comparing Plots   
 10.0 Ensemble Model  
 11.0 Transition Probability Markov Chain   
 
 # Libraries  
-library(sp) --for geostatistical analysis  
-library(rgdal) --for spatial data transformations  
-library(raster) --for spatial data manipulation and analysis  
-library(gstat) --for geostatistical analysis  
-library(dismo) --for k fold cross-validation  
-library(spMC) --for transition probability markov chains
+library(sp)     --for geostatistical analysis   
+library(rgdal)  --for spatial data transformations   
+library(raster) --for spatial data manipulation and analysis   
+library(gstat)  --for geostatistical analysis   
+library(dismo)  --for k fold cross-validation  
+library(spMC)   --for transition probability markov chains  
 
-**note:** install each of these libraries by typing the following in your Console: install.packages("name of library")  
+**note:** install each of these libraries by typing the following in your Console: install.packages("[name of library]")  
 
 ```{r setup, include=FALSE}
 library(knitr)
@@ -50,8 +54,6 @@ opts_chunk$set(
   tidy      =TRUE, 
   tidy.opts=list(width.cutoff=120)
 )
-
-setwd("/Users/EllieWhite/Box Sync/HYD273-Geostatistics_Fogg_Puente/Project")
 ```
 
 # 1.0 Spatial Data  
@@ -65,7 +67,7 @@ setwd("/Users/EllieWhite/Box Sync/HYD273-Geostatistics_Fogg_Puente/Project")
 
 ```{r data}
 # download the clean version from: http://rspatial.org/analysis/data/airqual.csv, read in the data from your working directory  
-aq_data <- read.csv("airqual.csv")
+aq_data <- read.csv("inputdata/airqual.csv")
 head(aq_data)
 
 # change the OZDLYAV column to ppm (parts per million) so it is easier to read. This is the column of data we will be working with  
@@ -444,7 +446,7 @@ contour(ck$OZDLYAV.pred, add=TRUE, nlevels=10)
 ```
 
 ## 7.7 Block Kriging --for rectangular or irregular blocks  
-Use block kriging to smoothe out the surface, and have a less computationally expensive model.  
+Use block kriging to smooth out the surface, and have a less computationally expensive model.  
 **block size:** a vector with 1, 2 or 3 values containing the size of a rectangular in x-, y- and z-dimension respectively (0 if not set), or a data frame with 1, 2 or 3 columns, containing the points that discretize the block in the x-, y- and z-dimension to define irregular blocks relative to (0,0) or (0,0,0)—see also the details section of predict.gstat.  
 ```{r bk}
 # let's try smaller blocks first
