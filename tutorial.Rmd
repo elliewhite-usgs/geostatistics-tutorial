@@ -504,9 +504,9 @@ plot(condsim2)
 ```
 
 # 9.0 Comparing Models  
-To recap, the models developed are: Average Model(am), Inverse Distance Weighted (idw), Simple Kriging (sk), Ordinary Kriging (ok), Unversal Kriging with a Linear Trend (ukl), Unversal Kriging with a Quadratic Trend (ukq), Indicator Kriging (ik), Co-Kriging (ck), Block Kriging (bk). 
+To recap, the models developed are: Average Model(am), Inverse Distance Weighted (idw), Simple Kriging (sk), Ordinary Kriging (ok), Universal Kriging with a Linear Trend (ukl), Universal Kriging with a Quadratic Trend (ukq), Indicator Kriging (ik), Co-Kriging (ck), Block Kriging (bk). 
 
-note: I left co-kriging out of the cross validation, because the code woould take a looooong time to run.  
+note: I left co-kriging out of the cross validation, because the code would take a looooong time to run.  
 
 ## 9.1 Comparing RMSE and NSE 
 Use k-fold crossvalidation to evaluate the models.   
@@ -783,7 +783,7 @@ legend("topright", legend=levels(aq_ta$categories), col=brwCol, pch=19)
 # make a grid
 grid <- expand.grid(X,Y)
 
-# the kriging algorithm will approximate the conditional probabilities by considering the twelve nearest neighbours for all points in the simulation grid.
+# the kriging algorithm will approximate the conditional probabilities by considering the twelve nearest neighbors for all points in the simulation grid.
 iks <- sim_ik(MTr$average, data=aq_ta$categories[smp], coords=aq_ta@coords[smp,], grid, knn=12)
 
 # Both fixed and random path simulation methods are performed by considering those nearest points along the axial directions within a radius of length ten.
