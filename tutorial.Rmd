@@ -87,7 +87,7 @@ aq_ta <- spTransform(aqd, TA)
 
 # for visualization purposes download California counties from link in: http://rspatial.org/analysis/rst/4-interpolation.html 
 library(raster)
-ca <- shapefile("Counties/counties_2000.shp")
+ca <- shapefile("inputdata/counties/counties_2000.shp")
 ca_ta <- spTransform(ca, TA)
 
 # visualization of the data
