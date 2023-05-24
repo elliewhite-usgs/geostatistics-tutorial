@@ -5,6 +5,7 @@ Welcome to this Git repository containing a Tutorial for HYD273 students: Introd
 Special thanks and major credit to Hijmans, R. (2016) Interpolation [Source code] http://www.rspatial.org for cleaned up example data and starter code. 
 
 Table of Contents: 
+
 1.0 Spatial Data  
 2.0 Blank Interpolation Zone  
 3.0 Evaluation Metrics  
@@ -94,8 +95,16 @@ You can run the R Markdown file by clicking on the "Knit" button in RStudio, or 
 rmarkdown::render()
 ```
 
-## Conclusion
-Thank you for using this Git repository! We hope that you find the R Markdown file useful for your data analysis or report writing needs. If you have any questions or feedback, please feel free to contact me white.elaheh@gmail.com.
+## Repo Organization
+* See the results in Tutorial.html or Tutorial.pdf.
+* The code is included in Tutorial.rmd file.
+* `airqual.csv` has the ozone data used in the Tutorial.
+* `Counties/` includes California county shapefiles for plotting purposes.
+* The `papers/` folder includes some useful papers found online for further reading.
+
+## Further Improvements Needed:
+* include spatio-temporal kriging in the analysis
+* apply the transision probability markov chain analysis to a better dataset
 
 ## sessionInfo()
 R version 4.2.3 (2023-03-15 ucrt)
@@ -121,13 +130,5 @@ loaded via a namespace (and not attached):
 [15] intervals_0.15.3 yaml_2.3.7       digest_0.6.31    codetools_0.2-19 evaluate_0.20    rmarkdown_2.20   compiler_4.2.3  
 [22] spacetime_1.3-0  zoo_1.8-11 
 
-## Repo Organization
-* See the results in Tutorial.html or Tutorial.pdf.
-* The code is included in Tutorial.rmd file.
-* `airqual.csv` has the ozone data used in the Tutorial.
-* `Counties/` includes California county shapefiles for plotting purposes.
-* The `papers/` folder includes some useful papers found online for further reading.
-
-## Further Improvements Needed:
-* include spatio-temporal kriging in the analysis
-* apply the transision probability markov chain analysis to a better dataset
+## Conclusion
+Thank you for using this Git repository! We hope that you find the R Markdown file useful for your data analysis or report writing needs. If you have any questions or feedback, please feel free to contact me white.elaheh@gmail.com.
