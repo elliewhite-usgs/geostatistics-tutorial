@@ -65,7 +65,7 @@ To run the R Markdown file, you will need to install the following packages:
 To install these packages, open RStudio and run the following commands in the console:
 
 ```
-## Install the necessary packages
+# Install the necessary packages
 install.packages("sp")
 install.packages("rgdal")
 install.packages("knitr")
@@ -78,10 +78,11 @@ You can customize the package list as per your requirements. Simply include this
 
 ### 1. Download the R Markdown file
 
-You can download the R Markdown file from this Git repository by clicking on the "Download" button or by cloning the repository using the following command:
+You can download the R Markdown file from this Git repository by clicking on  "<>Code" then "Download ZIP" or by cloning the repository using the following command:
 
+```
 git clone https://github.com/whiteellie/geostatistics-tutorial.git
-
+```
 
 ### 2. Open the R Markdown file in RStudio
 
@@ -96,17 +97,17 @@ rmarkdown::render()
 ```
 
 ## Repo Organization
-* See the results in Tutorial.html or Tutorial.pdf.
-* The code is included in Tutorial.rmd file.
+* See the results in `Tutorial.html` or `Tutorial.pdf`.
+* The code is included in `Tutorial.rmd` file.
 * `airqual.csv` has the ozone data used in the Tutorial.
-* `Counties/` includes California county shapefiles for plotting purposes.
+* `inputdata/counties/` includes California county shapefiles for plotting purposes.
 * The `papers/` folder includes some useful papers found online for further reading.
 
 ## Further Improvements Needed:
 * include spatio-temporal kriging in the analysis
 * apply the transision probability markov chain analysis to a better dataset
 
-## sessionInfo()
+## My sessionInfo()
 R version 4.2.3 (2023-03-15 ucrt)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 Running under: Windows 10 x64 (build 19045)
